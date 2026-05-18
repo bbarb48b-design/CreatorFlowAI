@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-sky-50 text-zinc-900 antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+}
+
+.glass-panel {
+  @apply bg-white/70 backdrop-blur-xl border border-sky-200/50 shadow-sm;
+}
+
+.neon-glow {
+  box-shadow: 0 4px 20px rgba(244, 114, 182, 0.2);
+}
+
+.step-indicator {
+  @apply relative pl-8 pb-8 last:pb-0;
+}
+
+.step-indicator::before {
+  content: '';
+  @apply absolute left-[15px] top-[30px] w-[2px] h-[calc(100%-30px)] bg-sky-200;
+}
+
+.step-indicator:last-child::before {
+  @apply hidden;
+}
+
+.active-step-ring {
+  @apply ring-4 ring-pink-500/20 bg-pink-500;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-sky-200 rounded-full hover:bg-sky-300;
+}
